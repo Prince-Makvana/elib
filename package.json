@@ -4,7 +4,7 @@
   "description": "this is ebook api roject",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.ts"
   },
   "keywords": [
     "rest",
@@ -14,7 +14,9 @@
   "author": "Prince Patel <princepatel2273@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/json": "^0.14.0",
     "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
