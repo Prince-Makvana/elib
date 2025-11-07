@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "this is ebook api roject",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon server.ts"
+    "dev": "nodemon --watch './**/*.ts' --exec \"node --loader ts-node/esm\" server.ts"
   },
   "keywords": [
     "rest",
@@ -15,10 +16,14 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/json": "^0.14.0",
+    "@types/express": "^5.0.5",
     "@types/node": "^24.10.0",
     "eslint": "^9.39.1",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
