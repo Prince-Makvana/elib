@@ -1,8 +1,12 @@
-import express from "express"
+import express, { type NextFunction, type Request, type Response } from "express"
+import globalErrorHandler from "./middlewares/globalErrorHandler.ts";
 const app = express();
 
 app.get("/",(req, res, next) =>{
     res.json({message:"Hello World!"});
 })
+
+
+app.use(globalErrorHandler);
 
 export default app;
