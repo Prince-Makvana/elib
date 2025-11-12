@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/json": "^0.14.0",
+    "@types/bcrypt": "^6.0.0",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.5",
     "@types/http-errors": "^2.0.5",
@@ -27,6 +28,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "http-errors": "^2.0.0",
