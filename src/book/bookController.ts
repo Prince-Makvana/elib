@@ -5,13 +5,15 @@ import path from "node:path";
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 import createHttpError from "http-errors";
+import bookModel from "./bookModel.ts";
+import fs from "node:fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const createBook = async (req: Request, res: Response, next: NextFunction)=>{
 
-    // const { } = req.body;
+    const {title,genre } = req.body;
 
     console.log("files", req.files); 
 
@@ -42,9 +44,21 @@ const createBook = async (req: Request, res: Response, next: NextFunction)=>{
             format: 'pdf',
         });
         console.log("bookFileUploadResult", bookFileUploadResult);
-        
         console.log("uploadResult", uploadResult);
-        res.json({})
+
+        const newBook = await bookModel.create({
+            title,
+            genre,
+            author: "691435d3a744154b4453514d",
+            coverImage: uploadResult.secure_url,
+            file: bookFileUploadResult.secure_url,
+        });
+
+ 
+        await fs.promises.unlink(filePath);
+        await fs.promises.unlink(bookFilePath);
+
+        res.status(201).json({id: newBook._id});
 
     } catch(err){
         console.log(err);
