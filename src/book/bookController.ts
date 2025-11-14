@@ -7,6 +7,7 @@ import { dirname } from 'node:path';
 import createHttpError from "http-errors";
 import bookModel from "./bookModel.ts";
 import fs from "node:fs";
+import type { AuthRequest } from "../middlewares/authenticate.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -43,14 +44,13 @@ const createBook = async (req: Request, res: Response, next: NextFunction)=>{
             folder: 'book-pdfs',
             format: 'pdf',
         });
-        console.log("bookFileUploadResult", bookFileUploadResult);
-        console.log("uploadResult", uploadResult);
-        // @ts-ignore
-        console.log("userId", req.userId);
+
+        const _req = req as AuthRequest;
+        
         const newBook = await bookModel.create({
             title,
             genre,
-            author: "691435d3a744154b4453514d",
+            author: _req.userId,
             coverImage: uploadResult.secure_url,
             file: bookFileUploadResult.secure_url,
         });
