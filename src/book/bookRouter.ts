@@ -1,5 +1,5 @@
 import express from "express";
-import { createBook, listBooks, updateBook } from "./bookController.ts";
+import { createBook, getSingleBook, listBooks, updateBook } from "./bookController.ts";
 import multer from "multer";
 import path from "node:path";
 
@@ -28,6 +28,7 @@ bookRouter.patch("/:bookId",authenticate ,upload.fields([
 ]), updateBook);
 
 
-bookRouter.get('/', listBooks)
+bookRouter.get('/', listBooks);
+bookRouter.get('/:bookId', getSingleBook);
 
 export default bookRouter;
