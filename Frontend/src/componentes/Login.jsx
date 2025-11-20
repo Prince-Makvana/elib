@@ -31,7 +31,7 @@ const Login = () => {
       const result = await res.json();
       if (res.ok && result.accessToken) {
         localStorage.setItem("accessToken", result.accessToken);
-        navigate("/book");   // redirect to Book page
+        navigate("/book"); 
       } else {
         setErrorMsg(result.message || "Login failed. Try again!");
       }
@@ -43,7 +43,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-cyan-50 to-teal-100 p-4">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>

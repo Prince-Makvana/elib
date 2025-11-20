@@ -37,7 +37,6 @@ const Signup = () => {
       const result = await res.json();
       if (res.ok && result.accessToken) {
         localStorage.setItem("accessToken", result.accessToken);
-        // Redirect to book page after successful registration!
         navigate("/book");
       } else {
         setErrorMsg(result.message || "Signup failed. Try again!");
@@ -50,7 +49,6 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-4">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
