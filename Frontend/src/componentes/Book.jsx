@@ -7,6 +7,7 @@ function parseJwt(token) {
   try {
     const payload = token.split(".")[1];
     const decoded = JSON.parse(atob(payload));
+    console.log("decoded",decoded);
     return decoded;
   } catch {
     return null;
